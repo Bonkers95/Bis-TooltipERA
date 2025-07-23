@@ -7,12 +7,14 @@ local icon_name = "BisTooltipIcon"
 
 local sources = {
     wh = "wh",
-    wowtbc = "wowtbc"
+    wowtbc = "wowtbc",
+    classicEra = "classicEra"
 }
 
 Bistooltip_source_to_url = {
     ["wh"] = "wowhead.com/mop-classic",
-    ["wowtbc"] = "wowtbc.gg/mop"
+    ["wowtbc"] = "wowtbc.gg/mop",
+    ["classicEra"] = "classic.wowhead.com"
 }
 
 local db_defaults = {
@@ -22,7 +24,7 @@ local db_defaults = {
         phase_index = 1,
         filter_specs = {},
         highlight_spec = {},
-        data_source = nil,
+        data_source = sources.classicEra,
         minimap_icon = true,
         tooltip_with_ctrl = false
     }
@@ -235,6 +237,11 @@ local function enableSpec(spec_name)
         Bistooltip_items = Bistooltip_wowtbc_items;
         Bistooltip_classes = Bistooltip_wowtbc_classes;
         Bistooltip_phases = Bistooltip_wowtbc_phases;
+    elseif spec_name == sources.classicEra then
+        Bistooltip_bislists = Bistooltip_classicEra_bislists;
+        Bistooltip_items = Bistooltip_classicEra_items;
+        Bistooltip_classes = Bistooltip_classicEra_classes;
+        Bistooltip_phases = Bistooltip_classicEra_phases;
     elseif spec_name == sources.wh then
         Bistooltip_bislists = Bistooltip_wh_bislists;
         Bistooltip_items = Bistooltip_wh_items;
